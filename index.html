@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krishna Hotel — Divine Luxury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --night:    #080c1a;
+  --deep:     #0c1228;
+  --indigo:   #162040;
+  --royal:    #1e2f5c;
+  --blue:     #2a4080;
+  --krishna:  #3d5fa0;
+  --sky:      #5b8fd4;
+  --gold:     #d4a017;
+  --goldlt:   #f0c040;
+  --goldpale: #f7e090;
+  --peacock:  #0f7a6e;
+  --teal:     #1aaa96;
+  --teallt:   #3ecfbe;
+  --saffron:  #e8820c;
+  --cream:    #fdf6e3;
+  --parch:    #f9f0d8;
+  --ivory:    #fffdf5;
+  --white:    #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--ivory);
+  color: var(--night);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--deep); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ── CURSOR ── */
+.cursor {
+  position: fixed; width: 14px; height: 14px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%; pointer-events: none;
+  z-index: 9999; transform: translate(-50%,-50%);
+  transition: transform 0.15s, width 0.2s, height 0.2s;
+  mix-blend-mode: normal;
+}
+.cursor-dot {
+  position: fixed; width: 4px; height: 4px;
+  background: var(--goldlt);
+  border-radius: 50%; pointer-events: none;
+  z-index: 9999; transform: translate(-50%,-50%);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3.5rem;
+  transition: background 0.5s, box-shadow 0.5s;
+}
+nav.scrolled {
+  background: rgba(8,12,26,0.96);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(212,160,23,0.2);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Yeseva One', serif;
+  font-size: 1.5rem;
+  color: var(--goldlt);
+  letter-spacing: 0.05em;
+}
+.nav-om {
+  font-size: 1.6rem;
+  color: var(--gold);
+  opacity: 0.8;
+}
+.nav-links {
+  display: flex; gap: 2.8rem; list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(253,246,227,0.55);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--goldlt); }
+.nav-book {
+  background: linear-gradient(135deg, var(--gold), var(--saffron));
+  color: var(--night);
+  border: none;
+  padding: 0.6rem 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; border-radius: 1px;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.nav-book:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, #1e2f5c 0%, #0c1228 45%, #080c1a 100%);
+}
+
+/* ── BASURI / FLUTE SVG BACKGROUND ── */
+.basuri-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* peacock pattern overlay */
+.hero-mandala {
+  position: absolute;
+  right: -5%; top: 50%; transform: translateY(-50%);
+  width: 55vw; height: 55vw;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(8,12,26,0.85) 0%,
+    rgba(8,12,26,0.6) 45%,
+    rgba(8,12,26,0.1) 100%
+  );
+}
+
+.hero-bottom-fade {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 180px;
+  background: linear-gradient(to top, var(--ivory), transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative; z-index: 3;
+  padding: 0 4.5rem;
+  max-width: 680px;
+}
+
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.65rem; font-weight: 300;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--goldlt);
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 1s ease 0.1s forwards;
+}
+.hero-divider { width: 40px; height: 1px; background: var(--gold); }
+
+.hero-title {
+  font-family: 'Yeseva One', serif;
+  font-size: clamp(3.5rem, 6.5vw, 7rem);
+  font-weight: 400;
+  line-height: 1.02;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+  opacity: 0; animation: fadeUp 1s ease 0.25s forwards;
+}
+.hero-subtitle {
+  font-family: 'Crimson Pro', serif;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 300; font-style: italic;
+  color: var(--goldpale);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeUp 1s ease 0.35s forwards;
+}
+.hero-desc {
+  font-size: 0.9rem; font-weight: 300;
+  line-height: 1.9;
+  color: rgba(253,246,227,0.55);
+  max-width: 430px;
+  margin-bottom: 2.8rem;
+  opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
+}
+.hero-btns {
+  display: flex; gap: 1rem; align-items: center;
+  opacity: 0; animation: fadeUp 1s ease 0.65s forwards;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--saffron) 100%);
+  color: var(--night);
+  border: none;
+  padding: 1rem 2.6rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer; border-radius: 1px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-gold:hover { opacity: 0.85; transform: translateY(-2px); }
+
+.btn-ghost {
+  background: none;
+  color: var(--cream);
+  border: 1px solid rgba(253,246,227,0.3);
+  padding: 1rem 2.6rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem; font-weight: 300;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer; border-radius: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--goldlt); color: var(--goldlt); }
+
+/* floating card */
+.hero-float-card {
+  position: absolute; right: 6%; top: 50%; transform: translateY(-40%);
+  z-index: 4;
+  background: rgba(22,32,64,0.6);
+  border: 1px solid rgba(212,160,23,0.3);
+  backdrop-filter: blur(14px);
+  padding: 2rem 2.2rem;
+  max-width: 230px;
+  border-radius: 2px;
+  opacity: 0; animation: fadeLeft 1s ease 0.9s forwards;
+}
+.float-label {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--goldpale); opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+.float-num {
+  font-family: 'Yeseva One', serif;
+  font-size: 3rem; color: var(--goldlt);
+  line-height: 1; margin-bottom: 0.2rem;
+}
+.float-desc { font-size: 0.75rem; font-weight: 300; color: rgba(253,246,227,0.5); }
+.float-sep {
+  width: 100%; height: 1px;
+  background: rgba(212,160,23,0.2);
+  margin: 1.2rem 0;
+}
+
+/* scroll line */
+.scroll-indicator {
+  position: absolute; bottom: 5rem; left: 4.5rem; z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeIn 1s ease 1.2s forwards;
+}
+.scroll-indicator span {
+  writing-mode: vertical-rl;
+  font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(212,160,23,0.5);
+}
+.scroll-bar {
+  width: 1px; height: 55px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity:1; transform: scaleY(1); }
+  50% { opacity:0.3; transform: scaleY(0.5) translateY(20px); }
+}
+
+/* hero stats */
+.hero-stats {
+  position: absolute; bottom: 0; right: 0; z-index: 4;
+  background: rgba(8,12,26,0.9);
+  border-top: 1px solid rgba(212,160,23,0.2);
+  border-left: 1px solid rgba(212,160,23,0.15);
+  display: flex;
+}
+.hstat {
+  padding: 1.4rem 2.5rem;
+  border-right: 1px solid rgba(212,160,23,0.15);
+  color: var(--cream);
+}
+.hstat:last-child { border-right: none; }
+.hstat-num {
+  font-family: 'Yeseva One', serif;
+  font-size: 2rem; color: var(--goldlt);
+  display: block; line-height: 1.1;
+}
+.hstat-lbl {
+  font-size: 0.6rem; font-weight: 300;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(253,246,227,0.35);
+  margin-top: 3px;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(25px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeLeft {
+  from { opacity:0; transform:translate(20px,-40%); }
+  to { opacity:1; transform:translate(0,-40%); }
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* ── BOOKING ── */
+.booking-bar {
+  background: var(--deep);
+  border-top: 1px solid rgba(212,160,23,0.15);
+  border-bottom: 1px solid rgba(212,160,23,0.1);
+  display: flex; align-items: stretch;
+  padding: 0 3.5rem;
+}
+.bf {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  border-right: 1px solid rgba(212,160,23,0.12);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.bf:hover { background: rgba(212,160,23,0.05); }
+.bf label {
+  display: block;
+  font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.3rem;
+}
+.bf input, .bf select {
+  background: none; border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem; font-weight: 300;
+  color: var(--cream); width: 100%; outline: none; cursor: pointer;
+}
+.bf select option { background: var(--deep); color: var(--cream); }
+.book-cta {
+  background: linear-gradient(135deg, var(--gold), var(--saffron));
+  color: var(--night); border: none;
+  padding: 0 3rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer; white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.book-cta:hover { opacity: 0.85; }
+
+/* ── SECTIONS ── */
+.section { padding: 8rem 3.5rem; }
+.sec-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--saffron); margin-bottom: 1rem;
+}
+.sec-tag::before { content:''; width:28px; height:1px; background:var(--saffron); }
+.sec-title {
+  font-family: 'Yeseva One', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400; line-height: 1.1;
+  color: var(--night); margin-bottom: 1rem;
+}
+.sec-title em {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic; color: var(--peacock);
+}
+.sec-body {
+  font-size: 0.9rem; font-weight: 300;
+  line-height: 1.9; color: #4a4a6a;
+  max-width: 480px;
+}
+
+/* ── ROOMS GRID ── */
+.rooms-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: end; margin-bottom: 4rem;
+}
+.view-all-link {
+  text-align: right;
+  display: block;
+}
+.view-all-link a {
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--peacock); text-decoration: none;
+  border-bottom: 1px solid rgba(15,122,110,0.4);
+  padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+}
+.view-all-link a:hover { color: var(--gold); border-color: var(--gold); }
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+}
+.room-card {
+  position: relative; overflow: hidden;
+  cursor: pointer; background: var(--deep);
+  min-height: 280px;
+}
+.room-card:first-child { grid-row: span 2; min-height: 580px; }
+.room-card svg { width:100%; height:100%; display:block; transition: transform 0.7s ease; }
+.room-card:hover svg { transform: scale(1.05); }
+.room-info {
+  position: absolute; bottom:0; left:0; right:0;
+  padding: 1.8rem 2rem;
+  background: linear-gradient(to top, rgba(8,12,26,0.95) 0%, transparent 100%);
+  transform: translateY(55px);
+  transition: transform 0.4s ease;
+}
+.room-card:hover .room-info { transform: translateY(0); }
+.room-tag {
+  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--goldlt); margin-bottom: 0.4rem;
+}
+.room-name {
+  font-family: 'Yeseva One', serif;
+  font-size: 1.5rem; color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+.room-card:first-child .room-name { font-size: 2.1rem; }
+.room-blurb {
+  font-size: 0.78rem; font-weight: 300;
+  color: rgba(253,246,227,0.55);
+  line-height: 1.65; margin-bottom: 1rem;
+  display: none;
+}
+.room-card:hover .room-blurb { display: block; }
+.room-footer {
+  display: flex; align-items: baseline; justify-content: space-between;
+}
+.room-price {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.4rem; color: var(--cream);
+}
+.room-price small {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem; color: rgba(253,246,227,0.4); margin-left:3px;
+}
+.room-book-btn {
+  font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--goldlt);
+  background: none; border: none; border-bottom: 1px solid var(--gold);
+  padding-bottom: 1px; cursor: pointer; transition: color 0.2s;
+}
+.room-badge {
+  position: absolute; top:1rem; right:1rem;
+  background: linear-gradient(135deg, var(--gold), var(--saffron));
+  color: var(--night);
+  font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 1px;
+}
+
+/* ── DIVINE STRIP ── */
+.divine-strip {
+  background: var(--deep);
+  padding: 7rem 3.5rem;
+  position: relative; overflow: hidden;
+}
+.divine-strip-basuri {
+  position: absolute; inset: 0;
+  opacity: 0.06; pointer-events: none;
+}
+.divine-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 7rem; align-items: center;
+  position: relative; z-index: 2;
+}
+.divine-sec-tag { color: var(--teallt); }
+.divine-sec-tag::before { background: var(--teallt); }
+.divine-title {
+  font-family: 'Yeseva One', serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  color: var(--goldpale); line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.divine-title em {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic; color: var(--teallt);
+}
+.divine-body {
+  font-size: 0.88rem; font-weight: 300;
+  line-height: 1.9; color: rgba(253,246,227,0.45);
+  max-width: 440px;
+}
+.amenities {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.8rem; margin-top: 3rem;
+}
+.amenity {
+  border-left: 2px solid rgba(212,160,23,0.3);
+  padding-left: 1.2rem;
+  transition: border-color 0.3s;
+}
+.amenity:hover { border-color: var(--gold); }
+.amenity-icon { font-size: 1.4rem; margin-bottom: 0.5rem; display:block; }
+.amenity-name {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.05rem; color: var(--mist, #c8ddb8);
+  color: var(--goldpale); margin-bottom: 0.3rem;
+}
+.amenity-desc {
+  font-size: 0.75rem; font-weight: 300;
+  color: rgba(253,246,227,0.4); line-height: 1.75;
+}
+
+/* right panel with flute art */
+.divine-art {
+  position: relative;
+  height: 520px;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(212,160,23,0.15);
+}
+
+/* ── EXPERIENCES ── */
+.exp-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 2px; margin-top: 4rem;
+  background: rgba(15,122,110,0.08);
+}
+.exp-item {
+  background: var(--ivory);
+  padding: 3rem 2.5rem;
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+  cursor: default;
+}
+.exp-item:hover { border-top-color: var(--gold); background: var(--parch); }
+.exp-num {
+  font-family: 'Yeseva One', serif;
+  font-size: 2.8rem; color: rgba(15,122,110,0.18);
+  display: block; margin-bottom: 1rem;
+  transition: color 0.3s;
+}
+.exp-item:hover .exp-num { color: var(--gold); }
+.exp-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.3rem; color: var(--night);
+  margin-bottom: 0.7rem;
+}
+.exp-desc {
+  font-size: 0.8rem; font-weight: 300;
+  color: #5a5a7a; line-height: 1.85;
+}
+
+/* ── DINING ── */
+.dining {
+  background: var(--parch);
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 580px;
+}
+.dining-visual { position:relative; overflow:hidden; background: var(--deep); }
+.dining-visual svg { width:100%; height:100%; object-fit:cover; }
+.dining-content {
+  padding: 6rem 5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.menu-items { list-style:none; margin-top:2.5rem; }
+.menu-items li {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(15,122,110,0.15);
+  gap: 1rem;
+}
+.menu-item-name {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.05rem; color: var(--night);
+}
+.menu-item-desc {
+  font-size: 0.75rem; font-weight: 300; color: #7a7a9a; margin-top: 2px;
+}
+.menu-item-price { font-size: 0.82rem; color: var(--peacock); white-space: nowrap; }
+
+/* ── TESTIMONIAL ── */
+.testimonial {
+  background: var(--night);
+  padding: 10rem 3.5rem; text-align: center;
+  position: relative; overflow: hidden;
+}
+.test-bg-flute {
+  position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
+}
+.test-om {
+  font-family: 'Yeseva One', serif;
+  font-size: 5rem; color: var(--gold);
+  opacity: 0.15; display:block;
+  margin-bottom: 1rem;
+  position: relative; z-index: 2;
+}
+.test-stars { color: var(--gold); letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 2.5rem; position:relative;z-index:2; }
+.test-quote {
+  font-family: 'Crimson Pro', serif;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  font-weight: 400; font-style: italic;
+  color: var(--cream); max-width: 760px;
+  margin: 0 auto 2rem; line-height: 1.55;
+  position: relative; z-index: 2;
+}
+.test-author {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(253,246,227,0.3);
+  position: relative; z-index: 2;
+}
+
+/* ── OFFER ── */
+.offer {
+  background: linear-gradient(135deg, var(--peacock) 0%, var(--deep) 60%);
+  padding: 5.5rem 3.5rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.offer-title {
+  font-family: 'Yeseva One', serif;
+  font-size: 2.1rem; color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.offer-desc {
+  font-size: 0.85rem; font-weight: 300;
+  color: rgba(253,246,227,0.55); line-height: 1.85;
+}
+.offer-form { display: flex; }
+.offer-input {
+  flex: 1; background: rgba(253,246,227,0.08);
+  border: 1px solid rgba(253,246,227,0.2); border-right: none;
+  padding: 1rem 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem; font-weight: 300;
+  color: var(--cream); outline: none; border-radius: 0;
+}
+.offer-input::placeholder { color: rgba(253,246,227,0.35); }
+.offer-submit {
+  background: linear-gradient(135deg, var(--gold), var(--saffron));
+  color: var(--night); border: none;
+  padding: 1rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.offer-submit:hover { opacity: 0.85; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--night);
+  padding: 6rem 3.5rem 3rem;
+  border-top: 1px solid rgba(212,160,23,0.12);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem; margin-bottom: 5rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(253,246,227,0.06);
+}
+.footer-brand {
+  font-family: 'Yeseva One', serif;
+  font-size: 1.6rem; color: var(--goldlt); margin-bottom: 0.5rem;
+}
+.footer-om { font-size: 1.2rem; color: var(--gold); opacity: 0.6; margin-bottom: 1rem; }
+.footer-tagline {
+  font-size: 0.8rem; font-weight: 300;
+  color: rgba(253,246,227,0.35); line-height: 1.85;
+  max-width: 240px; margin-bottom: 2rem;
+}
+.footer-col h4 {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(253,246,227,0.35); margin-bottom: 1.4rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col li {
+  font-size: 0.82rem; font-weight: 300;
+  color: rgba(253,246,227,0.4);
+  margin-bottom: 0.8rem; cursor: pointer;
+  transition: color 0.2s;
+}
+.footer-col li:hover { color: var(--goldlt); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.7rem; color: rgba(253,246,227,0.2);
+}
+.footer-social { display: flex; gap: 1rem; }
+.footer-social a {
+  width: 32px; height: 32px;
+  border: 1px solid rgba(212,160,23,0.2);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  text-decoration: none; font-size: 0.7rem;
+  color: rgba(212,160,23,0.4);
+  transition: border-color 0.2s, color 0.2s;
+}
+.footer-social a:hover { border-color: var(--goldlt); color: var(--goldlt); }
+
+/* reveal */
+.reveal { opacity:0; transform:translateY(28px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.visible { opacity:1; transform:none; }
+.reveal-r { opacity:0; transform:translateX(28px); transition: opacity 0.8s, transform 0.8s; }
+.reveal-r.visible { opacity:1; transform:none; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <span class="nav-om">ॐ</span>
+    Krishna Hotel
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Rooms</a></li>
+    <li><a href="#">Dining</a></li>
+    <li><a href="#">Wellness</a></li>
+    <li><a href="#">Experiences</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <button class="nav-book">Reserve Now</button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- KRISHNA BASURI (FLUTE) BACKGROUND — large-scale SVG art -->
+  <svg class="basuri-bg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Multiple flutes arranged diagonally across the full canvas -->
+
+    <!-- Flute 1 — large diagonal, center-right -->
+    <g transform="rotate(-30, 700, 450)" opacity="1">
+      <!-- flute body -->
+      <rect x="200" y="390" width="1000" height="28" rx="14" fill="#d4a017"/>
+      <!-- finger holes -->
+      <circle cx="350" cy="404" r="9" fill="#0c1228"/>
+      <circle cx="430" cy="404" r="9" fill="#0c1228"/>
+      <circle cx="510" cy="404" r="9" fill="#0c1228"/>
+      <circle cx="590" cy="404" r="9" fill="#0c1228"/>
+      <circle cx="670" cy="404" r="9" fill="#0c1228"/>
+      <circle cx="750" cy="404" r="9" fill="#0c1228"/>
+      <circle cx="830" cy="404" r="9" fill="#0c1228"/>
+      <!-- blow hole -->
+      <ellipse cx="290" cy="404" rx="7" ry="10" fill="#0c1228"/>
+      <!-- end cap -->
+      <rect x="185" y="393" width="20" height="22" rx="10" fill="#b8860b"/>
+      <rect x="1190" y="393" width="20" height="22" rx="10" fill="#b8860b"/>
+      <!-- decorative rings -->
+      <rect x="310" y="392" width="4" height="24" rx="2" fill="#f0c040" opacity="0.6"/>
+      <rect x="880" y="392" width="4" height="24" rx="2" fill="#f0c040" opacity="0.6"/>
+      <rect x="940" y="392" width="4" height="24" rx="2" fill="#f0c040" opacity="0.5"/>
+      <!-- flute sheen -->
+      <rect x="200" y="392" width="1000" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+    </g>
+
+    <!-- Flute 2 — smaller, top area -->
+    <g transform="rotate(-25, 400, 200)" opacity="0.85">
+      <rect x="-100" y="170" width="900" height="20" rx="10" fill="#c9a417"/>
+      <circle cx="60" cy="180" r="6.5" fill="#080c1a"/>
+      <circle cx="130" cy="180" r="6.5" fill="#080c1a"/>
+      <circle cx="200" cy="180" r="6.5" fill="#080c1a"/>
+      <circle cx="270" cy="180" r="6.5" fill="#080c1a"/>
+      <circle cx="340" cy="180" r="6.5" fill="#080c1a"/>
+      <circle cx="410" cy="180" r="6.5" fill="#080c1a"/>
+      <ellipse cx="10" cy="180" rx="5" ry="8" fill="#080c1a"/>
+      <rect x="-115" y="174" width="16" height="16" rx="8" fill="#a0780a"/>
+      <rect x="785" y="174" width="16" height="16" rx="8" fill="#a0780a"/>
+      <rect x="30" y="172" width="3" height="18" rx="1.5" fill="#f0c040" opacity="0.5"/>
+      <rect x="460" y="172" width="3" height="18" rx="1.5" fill="#f0c040" opacity="0.4"/>
+      <rect x="-100" y="173" width="900" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+    </g>
+
+    <!-- Flute 3 — bottom left area -->
+    <g transform="rotate(-32, 300, 750)" opacity="0.75">
+      <rect x="-200" y="700" width="1100" height="24" rx="12" fill="#b8960c"/>
+      <circle cx="0" cy="712" r="8" fill="#080c1a"/>
+      <circle cx="90" cy="712" r="8" fill="#080c1a"/>
+      <circle cx="180" cy="712" r="8" fill="#080c1a"/>
+      <circle cx="270" cy="712" r="8" fill="#080c1a"/>
+      <circle cx="360" cy="712" r="8" fill="#080c1a"/>
+      <circle cx="450" cy="712" r="8" fill="#080c1a"/>
+      <circle cx="540" cy="712" r="8" fill="#080c1a"/>
+      <ellipse cx="-65" cy="712" rx="6" ry="9" fill="#080c1a"/>
+      <rect x="-216" y="705" width="18" height="18" rx="9" fill="#8a6008"/>
+      <rect x="882" y="705" width="18" height="18" rx="9" fill="#8a6008"/>
+      <rect x="-40" y="704" width="3" height="20" rx="1.5" fill="#f0c040" opacity="0.4"/>
+      <rect x="620" y="704" width="3" height="20" rx="1.5" fill="#f0c040" opacity="0.35"/>
+      <rect x="-200" y="702" width="1100" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+    </g>
+
+    <!-- Flute 4 — accent, far right vertical area -->
+    <g transform="rotate(-20, 1200, 400)" opacity="0.6">
+      <rect x="900" y="350" width="700" height="16" rx="8" fill="#c9a417"/>
+      <circle cx="1000" cy="358" r="5.5" fill="#080c1a"/>
+      <circle cx="1060" cy="358" r="5.5" fill="#080c1a"/>
+      <circle cx="1120" cy="358" r="5.5" fill="#080c1a"/>
+      <circle cx="1180" cy="358" r="5.5" fill="#080c1a"/>
+      <circle cx="1240" cy="358" r="5.5" fill="#080c1a"/>
+      <rect x="1560" y="354" width="14" height="14" rx="7" fill="#a0780a"/>
+      <rect x="900" y="353" width="700" height="3" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+    </g>
+
+    <!-- Flute 5 — crossing, adds depth -->
+    <g transform="rotate(-40, 700, 450)" opacity="0.5">
+      <rect x="100" y="440" width="800" height="18" rx="9" fill="#a08010"/>
+      <circle cx="250" cy="449" r="6" fill="#080c1a"/>
+      <circle cx="320" cy="449" r="6" fill="#080c1a"/>
+      <circle cx="390" cy="449" r="6" fill="#080c1a"/>
+      <circle cx="460" cy="449" r="6" fill="#080c1a"/>
+      <circle cx="530" cy="449" r="6" fill="#080c1a"/>
+      <circle cx="600" cy="449" r="6" fill="#080c1a"/>
+      <rect x="86" y="444" width="16" height="16" rx="8" fill="#806008"/>
+      <rect x="884" y="444" width="16" height="16" rx="8" fill="#806008"/>
+      <rect x="100" y="442" width="800" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+    </g>
+
+    <!-- Lotus flowers (Krishna's symbol) - scattered -->
+    <!-- Lotus 1 -->
+    <g transform="translate(180, 120) scale(0.7)" opacity="0.5">
+      <ellipse cx="0" cy="-30" rx="12" ry="28" fill="#e8820c" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-30" rx="12" ry="28" fill="#d4a017" transform="rotate(45)"/>
+      <ellipse cx="0" cy="-30" rx="12" ry="28" fill="#e8820c" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-30" rx="12" ry="28" fill="#d4a017" transform="rotate(135)"/>
+      <ellipse cx="0" cy="-30" rx="12" ry="28" fill="#e8820c" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-30" rx="12" ry="28" fill="#d4a017" transform="rotate(225)"/>
+      <ellipse cx="0" cy="-30" rx="12" ry="28" fill="#e8820c" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-30" rx="12" ry="28" fill="#d4a017" transform="rotate(315)"/>
+      <circle cx="0" cy="0" r="15" fill="#f0c040"/>
+    </g>
+    <!-- Lotus 2 -->
+    <g transform="translate(1250, 800) scale(0.9)" opacity="0.4">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#0f7a6e" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#1aaa96" transform="rotate(45)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#0f7a6e" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#1aaa96" transform="rotate(135)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#0f7a6e" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#1aaa96" transform="rotate(225)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#0f7a6e" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#1aaa96" transform="rotate(315)"/>
+      <circle cx="0" cy="0" r="12" fill="#3ecfbe"/>
+    </g>
+    <!-- Lotus 3 small -->
+    <g transform="translate(1050, 150) scale(0.5)" opacity="0.4">
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#d4a017" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#e8820c" transform="rotate(60)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#d4a017" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#e8820c" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#d4a017" transform="rotate(240)"/>
+      <ellipse cx="0" cy="-28" rx="10" ry="24" fill="#e8820c" transform="rotate(300)"/>
+      <circle cx="0" cy="0" r="11" fill="#f0c040"/>
+    </g>
+
+    <!-- Peacock feather eye motifs -->
+    <!-- Feather 1 -->
+    <g transform="translate(1320, 320)" opacity="0.35">
+      <ellipse cx="0" cy="0" rx="22" ry="38" fill="#0f7a6e"/>
+      <ellipse cx="0" cy="0" rx="15" ry="26" fill="#1aaa96"/>
+      <ellipse cx="0" cy="0" rx="9" ry="16" fill="#2a4080"/>
+      <ellipse cx="0" cy="0" rx="5" ry="9" fill="#f0c040"/>
+      <circle cx="0" cy="0" r="3" fill="#080c1a"/>
+    </g>
+    <!-- Feather 2 -->
+    <g transform="translate(80, 750)" opacity="0.3">
+      <ellipse cx="0" cy="0" rx="18" ry="32" fill="#1aaa96"/>
+      <ellipse cx="0" cy="0" rx="12" ry="21" fill="#0f7a6e"/>
+      <ellipse cx="0" cy="0" rx="7" ry="13" fill="#2a4080"/>
+      <ellipse cx="0" cy="0" rx="4" ry="7" fill="#d4a017"/>
+      <circle cx="0" cy="0" r="2.5" fill="#080c1a"/>
+    </g>
+    <!-- Feather 3 -->
+    <g transform="translate(700, 80)" opacity="0.25">
+      <ellipse cx="0" cy="0" rx="16" ry="28" fill="#0f7a6e"/>
+      <ellipse cx="0" cy="0" rx="10" ry="18" fill="#3ecfbe"/>
+      <ellipse cx="0" cy="0" rx="6" ry="11" fill="#1e2f5c"/>
+      <ellipse cx="0" cy="0" rx="3" ry="6" fill="#d4a017"/>
+      <circle cx="0" cy="0" r="2" fill="#080c1a"/>
+    </g>
+
+    <!-- Musical notes floating -->
+    <text x="480" y="120" font-size="28" fill="#d4a017" opacity="0.2" font-family="serif">♩</text>
+    <text x="900" y="200" font-size="22" fill="#d4a017" opacity="0.15" font-family="serif">♪</text>
+    <text x="200" y="500" font-size="32" fill="#d4a017" opacity="0.15" font-family="serif">♫</text>
+    <text x="1100" y="650" font-size="26" fill="#d4a017" opacity="0.18" font-family="serif">♬</text>
+    <text x="350" y="800" font-size="20" fill="#d4a017" opacity="0.12" font-family="serif">♩</text>
+  </svg>
+
+  <!-- Peacock mandala right side -->
+  <svg class="hero-mandala" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Mandala rings -->
+    <circle cx="300" cy="300" r="280" fill="none" stroke="#d4a017" stroke-width="0.8"/>
+    <circle cx="300" cy="300" r="240" fill="none" stroke="#d4a017" stroke-width="0.5"/>
+    <circle cx="300" cy="300" r="200" fill="none" stroke="#0f7a6e" stroke-width="0.8"/>
+    <circle cx="300" cy="300" r="160" fill="none" stroke="#d4a017" stroke-width="0.5"/>
+    <circle cx="300" cy="300" r="120" fill="none" stroke="#0f7a6e" stroke-width="0.8"/>
+    <circle cx="300" cy="300" r="80" fill="none" stroke="#d4a017" stroke-width="1"/>
+    <circle cx="300" cy="300" r="40" fill="none" stroke="#0f7a6e" stroke-width="1"/>
+    <!-- Spokes -->
+    <line x1="300" y1="20" x2="300" y2="580" stroke="#d4a017" stroke-width="0.4"/>
+    <line x1="20" y1="300" x2="580" y2="300" stroke="#d4a017" stroke-width="0.4"/>
+    <line x1="102" y1="102" x2="498" y2="498" stroke="#d4a017" stroke-width="0.3"/>
+    <line x1="498" y1="102" x2="102" y2="498" stroke="#d4a017" stroke-width="0.3"/>
+    <line x1="55" y1="170" x2="545" y2="430" stroke="#d4a017" stroke-width="0.25"/>
+    <line x1="170" y1="55" x2="430" y2="545" stroke="#d4a017" stroke-width="0.25"/>
+    <line x1="545" y1="170" x2="55" y2="430" stroke="#d4a017" stroke-width="0.25"/>
+    <line x1="430" y1="55" x2="170" y2="545" stroke="#d4a017" stroke-width="0.25"/>
+    <!-- Petal shapes around center -->
+    <ellipse cx="300" cy="200" rx="14" ry="30" fill="#d4a017" opacity="0.5"/>
+    <ellipse cx="300" cy="400" rx="14" ry="30" fill="#d4a017" opacity="0.5"/>
+    <ellipse cx="200" cy="300" rx="30" ry="14" fill="#d4a017" opacity="0.5"/>
+    <ellipse cx="400" cy="300" rx="30" ry="14" fill="#d4a017" opacity="0.5"/>
+    <ellipse cx="229" cy="229" rx="14" ry="30" fill="#0f7a6e" opacity="0.4" transform="rotate(45,229,229)"/>
+    <ellipse cx="371" cy="229" rx="14" ry="30" fill="#0f7a6e" opacity="0.4" transform="rotate(-45,371,229)"/>
+    <ellipse cx="229" cy="371" rx="14" ry="30" fill="#0f7a6e" opacity="0.4" transform="rotate(-45,229,371)"/>
+    <ellipse cx="371" cy="371" rx="14" ry="30" fill="#0f7a6e" opacity="0.4" transform="rotate(45,371,371)"/>
+    <!-- Center flute horizontal -->
+    <rect x="160" y="296" width="280" height="8" rx="4" fill="#d4a017" opacity="0.8"/>
+    <circle cx="185" cy="300" r="5" fill="#080c1a" opacity="0.7"/>
+    <circle cx="215" cy="300" r="5" fill="#080c1a" opacity="0.7"/>
+    <circle cx="245" cy="300" r="5" fill="#080c1a" opacity="0.7"/>
+    <circle cx="275" cy="300" r="5" fill="#080c1a" opacity="0.7"/>
+    <circle cx="305" cy="300" r="5" fill="#080c1a" opacity="0.7"/>
+    <circle cx="335" cy="300" r="5" fill="#080c1a" opacity="0.7"/>
+    <circle cx="365" cy="300" r="5" fill="#080c1a" opacity="0.7"/>
+    <circle cx="300" cy="300" r="20" fill="#d4a017" opacity="0.6"/>
+    <circle cx="300" cy="300" r="10" fill="#080c1a" opacity="0.5"/>
+  </svg>
+
+  <div class="hero-overlay"></div>
+
+  <!-- Floating stat card -->
+  <div class="hero-float-card">
+    <p class="float-label">Signature Suite</p>
+    <span class="float-num">108</span>
+    <p class="float-desc">Luxury rooms & suites, each named after a divine rāga</p>
+    <div class="float-sep"></div>
+    <p class="float-label" style="margin-bottom:0.3rem;">Est. 1994 · Vrindavan</p>
+    <p class="float-desc">Green Heritage Certified</p>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-divider"></span>
+      Divine Hospitality · Vrindavan
+    </div>
+    <h1 class="hero-title">Krishna<br>Hotel</h1>
+    <p class="hero-subtitle">Where every stay becomes a melody</p>
+    <p class="hero-desc">Named for the eternal flute-player whose notes fill the cosmos with divine love — Krishna Hotel offers luxury steeped in devotion, serenity, and timeless Indian artistry.</p>
+    <div class="hero-btns">
+      <button class="btn-gold">Explore Suites</button>
+      <button class="btn-ghost">View Gallery</button>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat">
+      <span class="hstat-num">108</span>
+      <span class="hstat-lbl">Divine Suites</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-num">30+</span>
+      <span class="hstat-lbl">Years of Grace</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-num">★ 4.9</span>
+      <span class="hstat-lbl">Guest Bliss</span>
+    </div>
+  </div>
+
+  <div class="hero-bottom-fade"></div>
+</section>
+
+<!-- ── BOOKING ── -->
+<div class="booking-bar">
+  <div class="bf">
+    <label>Check In</label>
+    <input type="text" value="Jun 14, 2026" readonly>
+  </div>
+  <div class="bf">
+    <label>Check Out</label>
+    <input type="text" value="Jun 18, 2026" readonly>
+  </div>
+  <div class="bf">
+    <label>Guests</label>
+    <select>
+      <option>2 Adults</option>
+      <option>1 Adult</option>
+      <option>3 Adults</option>
+    </select>
+  </div>
+  <div class="bf">
+    <label>Room Type</label>
+    <select>
+      <option>Any Suite</option>
+      <option>Rāga Suite</option>
+      <option>Peacock Villa</option>
+      <option>Krishna Suite</option>
+    </select>
+  </div>
+  <button class="book-cta">Check Availability →</button>
+</div>
+
+<!-- ── ROOMS ── -->
+<section class="section">
+  <div class="rooms-intro reveal">
+    <div>
+      <div class="sec-tag">Our Sanctuaries</div>
+      <h2 class="sec-title">Suites named<br>after <em>divine rāgas</em></h2>
+    </div>
+    <div class="view-all-link">
+      <p class="sec-body" style="font-size:0.85rem;margin-bottom:1.5rem;text-align:right;">108 rooms adorned with hand-crafted inlay, silk drapes, and the fragrance of mogra and sandalwood.</p>
+      <a href="#">View all suites →</a>
+    </div>
+  </div>
+
+  <div class="rooms-grid reveal">
+    <!-- Large left card -->
+    <div class="room-card">
+      <svg viewBox="0 0 600 580" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="580" fill="#080c1a"/>
+        <!-- Sky gradient -->
+        <defs>
+          <radialGradient id="roomGlow1" cx="50%" cy="35%" r="55%">
+            <stop offset="0%" stop-color="#1e2f5c" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#080c1a" stop-opacity="1"/>
+          </radialGradient>
+        </defs>
+        <rect width="600" height="580" fill="url(#roomGlow1)"/>
+        <!-- Stars -->
+        <circle cx="100" cy="60" r="1.2" fill="rgba(255,255,255,0.6)"/>
+        <circle cx="300" cy="40" r="0.8" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="480" cy="75" r="1" fill="rgba(255,255,255,0.55)"/>
+        <circle cx="550" cy="30" r="0.9" fill="rgba(255,255,255,0.4)"/>
+        <!-- Moon with halo -->
+        <circle cx="510" cy="80" r="45" fill="rgba(212,160,23,0.06)"/>
+        <circle cx="510" cy="80" r="32" fill="rgba(212,160,23,0.09)"/>
+        <circle cx="510" cy="80" r="22" fill="rgba(212,160,23,0.15)"/>
+        <!-- Peacock silhouette -->
+        <ellipse cx="300" cy="220" rx="80" ry="50" fill="#0a1020"/>
+        <!-- tail feathers -->
+        <ellipse cx="300" cy="150" rx="18" ry="60" fill="#0f2838" transform="rotate(-25,300,220)"/>
+        <ellipse cx="300" cy="150" rx="18" ry="60" fill="#0f2838" transform="rotate(-10,300,220)"/>
+        <ellipse cx="300" cy="150" rx="18" ry="60" fill="#0f2838" transform="rotate(5,300,220)"/>
+        <ellipse cx="300" cy="150" rx="18" ry="60" fill="#0f2838" transform="rotate(20,300,220)"/>
+        <ellipse cx="300" cy="150" rx="18" ry="60" fill="#0f2838" transform="rotate(35,300,220)"/>
+        <!-- Feather eyes -->
+        <ellipse cx="250" cy="120" rx="8" ry="14" fill="#0f7a6e" opacity="0.7"/>
+        <ellipse cx="250" cy="120" rx="4" ry="7" fill="#d4a017" opacity="0.8"/>
+        <ellipse cx="280" cy="100" rx="8" ry="14" fill="#0f7a6e" opacity="0.7"/>
+        <ellipse cx="280" cy="100" rx="4" ry="7" fill="#d4a017" opacity="0.8"/>
+        <ellipse cx="312" cy="95" rx="8" ry="14" fill="#0f7a6e" opacity="0.7"/>
+        <ellipse cx="312" cy="95" rx="4" ry="7" fill="#d4a017" opacity="0.8"/>
+        <ellipse cx="345" cy="103" rx="8" ry="14" fill="#0f7a6e" opacity="0.7"/>
+        <ellipse cx="345" cy="103" rx="4" ry="7" fill="#d4a017" opacity="0.8"/>
+        <!-- body -->
+        <ellipse cx="300" cy="240" rx="40" ry="55" fill="#0c1832"/>
+        <!-- neck -->
+        <rect x="290" y="195" width="20" height="50" rx="10" fill="#0a1428"/>
+        <!-- head -->
+        <circle cx="300" cy="190" r="16" fill="#0c1832"/>
+        <!-- crest -->
+        <line x1="300" y1="174" x2="295" y2="158" stroke="#0f7a6e" stroke-width="1.5"/>
+        <circle cx="295" cy="156" r="3" fill="#3ecfbe"/>
+        <line x1="300" y1="174" x2="305" y2="155" stroke="#0f7a6e" stroke-width="1.5"/>
+        <circle cx="305" cy="153" r="3" fill="#3ecfbe"/>
+        <!-- Hotel building -->
+        <rect x="80" y="320" width="440" height="260" fill="#0a1020"/>
+        <!-- facade -->
+        <rect x="90" y="330" width="420" height="10" fill="#162040"/>
+        <!-- arched windows row 1 -->
+        <rect x="110" y="350" width="50" height="70" rx="25" fill="rgba(212,160,23,0.12)"/>
+        <rect x="180" y="350" width="50" height="70" rx="25" fill="rgba(212,160,23,0.18)"/>
+        <rect x="250" y="350" width="50" height="70" rx="25" fill="rgba(212,160,23,0.15)"/>
+        <rect x="320" y="350" width="50" height="70" rx="25" fill="rgba(212,160,23,0.2)"/>
+        <rect x="390" y="350" width="60" height="70" rx="25" fill="rgba(212,160,23,0.12)"/>
+        <!-- arched windows row 2 -->
+        <rect x="110" y="435" width="50" height="60" rx="25" fill="rgba(232,130,12,0.12)"/>
+        <rect x="180" y="435" width="50" height="60" rx="25" fill="rgba(232,130,12,0.08)"/>
+        <rect x="250" y="435" width="50" height="60" rx="25" fill="rgba(232,130,12,0.14)"/>
+        <rect x="320" y="435" width="50" height="60" rx="25" fill="rgba(232,130,12,0.09)"/>
+        <rect x="390" y="435" width="60" height="60" rx="25" fill="rgba(232,130,12,0.1)"/>
+        <!-- grand entrance -->
+        <rect x="250" y="505" width="100" height="75" rx="2" fill="#0c1228"/>
+        <rect x="253" y="508" width="94" height="70" rx="1" fill="rgba(212,160,23,0.1)"/>
+        <!-- top spire -->
+        <path d="M270 330 L300 295 L330 330Z" fill="#162040"/>
+        <circle cx="300" cy="292" r="5" fill="#d4a017" opacity="0.8"/>
+        <!-- ground glow -->
+        <ellipse cx="300" cy="570" rx="280" ry="40" fill="rgba(212,160,23,0.06)"/>
+        <!-- Flute motif subtle -->
+        <rect x="60" y="290" width="480" height="10" rx="5" fill="rgba(212,160,23,0.15)"/>
+        <circle cx="120" cy="295" r="5" fill="rgba(8,12,26,0.6)"/>
+        <circle cx="180" cy="295" r="5" fill="rgba(8,12,26,0.6)"/>
+        <circle cx="240" cy="295" r="5" fill="rgba(8,12,26,0.6)"/>
+        <circle cx="300" cy="295" r="5" fill="rgba(8,12,26,0.6)"/>
+        <circle cx="360" cy="295" r="5" fill="rgba(8,12,26,0.6)"/>
+        <circle cx="420" cy="295" r="5" fill="rgba(8,12,26,0.6)"/>
+      </svg>
+      <div class="room-info">
+        <div class="room-tag">Presidential Suite</div>
+        <h3 class="room-name">Krishna Suite</h3>
+        <p class="room-blurb">Floor-to-ceiling hand-painted murals of the Vrindavan forests, private puja room with brass idols, silk-canopied king bed, and a terrace facing the Yamuna.</p>
+        <div class="room-footer">
+          <div class="room-price">₹42,000 <small>/ night</small></div>
+          <button class="room-book-btn">Reserve →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top right -->
+    <div class="room-card">
+      <div class="room-badge">Most Beloved</div>
+      <svg viewBox="0 0 560 280" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="560" height="280" fill="#0c1228"/>
+        <defs>
+          <radialGradient id="rg2" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#1e2f5c" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#080c1a"/>
+          </radialGradient>
+        </defs>
+        <rect width="560" height="280" fill="url(#rg2)"/>
+        <!-- stars -->
+        <circle cx="80" cy="35" r="1" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="350" cy="20" r="0.8" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="500" cy="50" r="1.1" fill="rgba(255,255,255,0.45)"/>
+        <!-- moon -->
+        <circle cx="480" cy="55" r="28" fill="rgba(212,160,23,0.07)"/>
+        <circle cx="480" cy="55" r="18" fill="rgba(212,160,23,0.1)"/>
+        <!-- Flute horizontal across scene -->
+        <rect x="30" y="105" width="500" height="18" rx="9" fill="rgba(212,160,23,0.35)"/>
+        <circle cx="100" cy="114" r="6" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="160" cy="114" r="6" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="220" cy="114" r="6" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="280" cy="114" r="6" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="340" cy="114" r="6" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="400" cy="114" r="6" fill="rgba(8,12,26,0.8)"/>
+        <rect x="30" y="107" width="500" height="5" rx="2" fill="rgba(255,255,255,0.12)"/>
+        <!-- Room interior feel -->
+        <rect x="0" y="140" width="560" height="140" fill="#0a1020"/>
+        <!-- Bed silhouette -->
+        <rect x="140" y="168" width="280" height="90" rx="4" fill="#0c1832"/>
+        <rect x="140" y="168" width="280" height="18" rx="4" fill="#162040"/>
+        <!-- pillows -->
+        <rect x="158" y="175" width="80" height="50" rx="8" fill="#1e2f5c"/>
+        <rect x="322" y="175" width="80" height="50" rx="8" fill="#1e2f5c"/>
+        <!-- silk drape suggestion -->
+        <path d="M140 168 Q280 140 420 168" fill="none" stroke="rgba(212,160,23,0.3)" stroke-width="1.5"/>
+        <!-- peacock painting on wall -->
+        <rect x="240" y="148" width="80" height="16" rx="2" fill="rgba(212,160,23,0.1)"/>
+        <!-- lotus on bedside -->
+        <circle cx="120" cy="215" r="10" fill="rgba(15,122,110,0.3)"/>
+        <circle cx="440" cy="215" r="10" fill="rgba(15,122,110,0.3)"/>
+        <!-- warm lamp glow -->
+        <ellipse cx="120" cy="230" rx="25" ry="10" fill="rgba(232,130,12,0.12)"/>
+        <ellipse cx="440" cy="230" rx="25" ry="10" fill="rgba(232,130,12,0.12)"/>
+      </svg>
+      <div class="room-info">
+        <div class="room-tag">Deluxe Room</div>
+        <h3 class="room-name">Rāga Suite</h3>
+        <p class="room-blurb">Silk-upholstered walls, inlaid teak furniture, private sit-out with a hand-painted flute mural above the bed.</p>
+        <div class="room-footer">
+          <div class="room-price">₹18,500 <small>/ night</small></div>
+          <button class="room-book-btn">Reserve →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom right -->
+    <div class="room-card">
+      <svg viewBox="0 0 560 280" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="560" height="280" fill="#080c1a"/>
+        <defs>
+          <radialGradient id="rg3" cx="40%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#0f2838" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#080c1a"/>
+          </radialGradient>
+        </defs>
+        <rect width="560" height="280" fill="url(#rg3)"/>
+        <!-- stars -->
+        <circle cx="200" cy="25" r="1" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="420" cy="40" r="0.8" fill="rgba(255,255,255,0.4)"/>
+        <!-- teal pool -->
+        <rect x="80" y="155" width="400" height="95" rx="5" fill="#0a2830"/>
+        <rect x="80" y="155" width="400" height="8" fill="rgba(62,207,190,0.25)"/>
+        <!-- pool ripple lines -->
+        <ellipse cx="280" cy="202" rx="120" ry="15" fill="none" stroke="rgba(62,207,190,0.2)" stroke-width="1.5"/>
+        <ellipse cx="280" cy="202" rx="80" ry="10" fill="none" stroke="rgba(62,207,190,0.15)" stroke-width="1"/>
+        <!-- lotus on water -->
+        <circle cx="200" cy="202" r="12" fill="rgba(212,160,23,0.2)"/>
+        <circle cx="200" cy="202" r="7" fill="rgba(212,160,23,0.3)"/>
+        <circle cx="350" cy="195" r="10" fill="rgba(15,122,110,0.25)"/>
+        <!-- pavilion -->
+        <rect x="160" y="90" width="240" height="70" fill="#0c1832"/>
+        <!-- arch top -->
+        <path d="M140 90 L280 50 L420 90Z" fill="#0a1428"/>
+        <!-- columns -->
+        <rect x="160" y="90" width="12" height="75" fill="#0e1e3c"/>
+        <rect x="388" y="90" width="12" height="75" fill="#0e1e3c"/>
+        <!-- arched opening glow -->
+        <rect x="195" y="95" width="170" height="62" rx="4" fill="rgba(212,160,23,0.08)"/>
+        <!-- flute across pool area -->
+        <rect x="30" y="145" width="500" height="12" rx="6" fill="rgba(212,160,23,0.2)"/>
+        <circle cx="100" cy="151" r="5" fill="rgba(8,12,26,0.7)"/>
+        <circle cx="160" cy="151" r="5" fill="rgba(8,12,26,0.7)"/>
+        <circle cx="220" cy="151" r="5" fill="rgba(8,12,26,0.7)"/>
+        <circle cx="280" cy="151" r="5" fill="rgba(8,12,26,0.7)"/>
+        <circle cx="340" cy="151" r="5" fill="rgba(8,12,26,0.7)"/>
+        <!-- gold spire top of pavilion -->
+        <circle cx="280" cy="48" r="6" fill="#d4a017" opacity="0.7"/>
+        <!-- ground floral border -->
+        <ellipse cx="280" cy="265" rx="260" ry="30" fill="rgba(212,160,23,0.05)"/>
+      </svg>
+      <div class="room-info">
+        <div class="room-tag">Pool Villa</div>
+        <h3 class="room-name">Yamuna Villa</h3>
+        <p class="room-blurb">Private plunge pool with floating lotus, open-air pavilion, and an outdoor puja pavilion under the stars.</p>
+        <div class="room-footer">
+          <div class="room-price">₹58,000 <small>/ night</small></div>
+          <button class="room-book-btn">Reserve →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIVINE PHILOSOPHY ── -->
+<section class="divine-strip">
+  <!-- Basuri background repeated -->
+  <svg class="divine-strip-basuri" viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg">
+    <g transform="rotate(-15, 700, 350)" opacity="1">
+      <rect x="0" y="310" width="1400" height="30" rx="15" fill="#d4a017"/>
+      <circle cx="150" cy="325" r="10" fill="#080c1a"/>
+      <circle cx="250" cy="325" r="10" fill="#080c1a"/>
+      <circle cx="350" cy="325" r="10" fill="#080c1a"/>
+      <circle cx="450" cy="325" r="10" fill="#080c1a"/>
+      <circle cx="550" cy="325" r="10" fill="#080c1a"/>
+      <circle cx="650" cy="325" r="10" fill="#080c1a"/>
+      <circle cx="750" cy="325" r="10" fill="#080c1a"/>
+      <circle cx="850" cy="325" r="10" fill="#080c1a"/>
+      <rect x="0" y="312" width="1400" height="7" rx="3" fill="rgba(255,255,255,0.12)"/>
+    </g>
+    <g transform="rotate(-20, 700, 350)" opacity="0.6">
+      <rect x="100" y="360" width="1200" height="20" rx="10" fill="#c9a417"/>
+      <circle cx="250" cy="370" r="7" fill="#080c1a"/>
+      <circle cx="350" cy="370" r="7" fill="#080c1a"/>
+      <circle cx="450" cy="370" r="7" fill="#080c1a"/>
+      <circle cx="550" cy="370" r="7" fill="#080c1a"/>
+      <circle cx="650" cy="370" r="7" fill="#080c1a"/>
+      <circle cx="750" cy="370" r="7" fill="#080c1a"/>
+    </g>
+    <text x="200" y="200" font-size="48" fill="#d4a017" font-family="serif">♪</text>
+    <text x="800" y="150" font-size="40" fill="#d4a017" font-family="serif">♫</text>
+    <text x="1100" y="500" font-size="44" fill="#d4a017" font-family="serif">♩</text>
+  </svg>
+
+  <div class="divine-grid">
+    <div class="reveal-r">
+      <div class="sec-tag divine-sec-tag">Our Essence</div>
+      <h2 class="divine-title">Hospitality as<br><em>seva</em> — sacred service</h2>
+      <p class="divine-body">Just as Krishna served his devotees with boundless love, we pour that same devotion into every detail of your stay — from the first namaste to the last farewell.</p>
+      <div class="amenities">
+        <div class="amenity">
+          <span class="amenity-icon">🪈</span>
+          <div class="amenity-name">Live Classical Music</div>
+          <p class="amenity-desc">Bansuri recitals at sunrise and sunset in our open courtyard. A daily offering of sound and stillness.</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon">🪷</span>
+          <div class="amenity-name">Lotus Spa</div>
+          <p class="amenity-desc">Ayurvedic treatments drawn from ancient Vrindavan traditions. Pure herbal oils, trained vaidyas.</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon">🌅</span>
+          <div class="amenity-name">Morning Aarti</div>
+          <p class="amenity-desc">Join our dawn ceremony at the riverside pavilion. Marigold garlands, dhoop, and the Ganga at first light.</p>
+        </div>
+        <div class="amenity">
+          <span class="amenity-icon">🍃</span>
+          <div class="amenity-name">Pure Saatvik Kitchen</div>
+          <p class="amenity-desc">100% vegetarian, farm-to-temple cuisine. Every meal prepared with devotion as an offering to the divine.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divine-art reveal">
+      <svg width="100%" height="100%" viewBox="0 0 480 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="480" height="520" fill="#0c1228"/>
+        <defs>
+          <radialGradient id="courtyard" cx="50%" cy="45%" r="55%">
+            <stop offset="0%" stop-color="#1e2f5c" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#080c1a"/>
+          </radialGradient>
+        </defs>
+        <rect width="480" height="520" fill="url(#courtyard)"/>
+        <!-- Stars -->
+        <circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="280" cy="25" r="0.8" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="420" cy="55" r="1.1" fill="rgba(255,255,255,0.45)"/>
+        <!-- Full moon -->
+        <circle cx="380" cy="70" r="48" fill="rgba(212,160,23,0.06)"/>
+        <circle cx="380" cy="70" r="34" fill="rgba(212,160,23,0.09)"/>
+        <circle cx="380" cy="70" r="22" fill="rgba(212,160,23,0.15)"/>
+        <!-- Temple / pavilion -->
+        <rect x="100" y="200" width="280" height="200" fill="#0a1020"/>
+        <!-- stepped plinth -->
+        <rect x="80" y="390" width="320" height="18" fill="#0e1a30"/>
+        <rect x="60" y="400" width="360" height="15" fill="#0c1828"/>
+        <!-- pillars -->
+        <rect x="110" y="200" width="18" height="210" fill="#0f1e38"/>
+        <rect x="180" y="200" width="18" height="210" fill="#0f1e38"/>
+        <rect x="284" y="200" width="18" height="210" fill="#0f1e38"/>
+        <rect x="354" y="200" width="18" height="210" fill="#0f1e38"/>
+        <!-- pillar tops (capitals) -->
+        <rect x="104" y="196" width="30" height="8" rx="1" fill="#162040"/>
+        <rect x="174" y="196" width="30" height="8" rx="1" fill="#162040"/>
+        <rect x="278" y="196" width="30" height="8" rx="1" fill="#162040"/>
+        <rect x="348" y="196" width="30" height="8" rx="1" fill="#162040"/>
+        <!-- arches between pillars -->
+        <path d="M128 200 Q154 170 180 200" fill="none" stroke="#162040" stroke-width="3"/>
+        <path d="M198 200 Q241 160 284 200" fill="none" stroke="#162040" stroke-width="3"/>
+        <path d="M302 200 Q328 170 354 200" fill="none" stroke="#162040" stroke-width="3"/>
+        <!-- inner glow -->
+        <rect x="130" y="205" width="220" height="185" fill="rgba(212,160,23,0.04)"/>
+        <!-- Idol area / sanctum -->
+        <rect x="195" y="230" width="90" height="140" rx="2" fill="#091424"/>
+        <rect x="205" y="240" width="70" height="120" rx="1" fill="rgba(212,160,23,0.06)"/>
+        <!-- Idol silhouette (Krishna) -->
+        <!-- body -->
+        <ellipse cx="240" cy="320" rx="18" ry="30" fill="#0c1832"/>
+        <!-- arms holding flute -->
+        <line x1="222" y1="305" x2="200" y2="315" stroke="#0f1e38" stroke-width="5" stroke-linecap="round"/>
+        <line x1="258" y1="305" x2="280" y2="310" stroke="#0f1e38" stroke-width="5" stroke-linecap="round"/>
+        <!-- flute tiny -->
+        <rect x="198" y="312" width="84" height="5" rx="2.5" fill="rgba(212,160,23,0.5)"/>
+        <!-- head -->
+        <circle cx="240" cy="285" r="14" fill="#0d1830"/>
+        <!-- crown -->
+        <path d="M227 278 L232 262 L240 272 L248 260 L253 278Z" fill="rgba(212,160,23,0.4)"/>
+        <!-- halo -->
+        <circle cx="240" cy="285" r="22" fill="none" stroke="rgba(212,160,23,0.25)" stroke-width="1.5"/>
+        <!-- Flute/Basuri horizontal across the pavilion -->
+        <rect x="50" y="185" width="380" height="14" rx="7" fill="rgba(212,160,23,0.3)"/>
+        <circle cx="90" cy="192" r="5" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="140" cy="192" r="5" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="190" cy="192" r="5" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="240" cy="192" r="5" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="290" cy="192" r="5" fill="rgba(8,12,26,0.8)"/>
+        <circle cx="340" cy="192" r="5" fill="rgba(8,12,26,0.8)"/>
+        <rect x="50" y="187" width="380" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+        <!-- roof shikhara -->
+        <path d="M160 200 L240 100 L320 200Z" fill="#0a1428"/>
+        <path d="M175 200 L240 115 L305 200Z" fill="#0d1830"/>
+        <circle cx="240" cy="97" r="10" fill="#d4a017" opacity="0.6"/>
+        <rect x="235" y="87" width="10" height="15" fill="rgba(212,160,23,0.4)"/>
+        <!-- ground water / lotus pool -->
+        <rect x="0" y="415" width="480" height="105" fill="#081520"/>
+        <rect x="0" y="415" width="480" height="8" fill="rgba(62,207,190,0.15)"/>
+        <!-- lotus flowers in water -->
+        <circle cx="120" cy="445" r="14" fill="rgba(212,160,23,0.18)"/>
+        <circle cx="120" cy="445" r="8" fill="rgba(212,160,23,0.28)"/>
+        <circle cx="120" cy="445" r="4" fill="rgba(240,192,64,0.4)"/>
+        <circle cx="360" cy="455" r="12" fill="rgba(15,122,110,0.2)"/>
+        <circle cx="360" cy="455" r="6" fill="rgba(62,207,190,0.3)"/>
+        <circle cx="240" cy="440" r="10" fill="rgba(212,160,23,0.15)"/>
+        <circle cx="240" cy="440" r="5" fill="rgba(212,160,23,0.25)"/>
+        <!-- light reflections on water -->
+        <ellipse cx="240" cy="430" rx="160" ry="8" fill="rgba(212,160,23,0.05)"/>
+        <!-- firefly-like diyas -->
+        <circle cx="180" cy="420" r="2.5" fill="#d4a017" opacity="0.7"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite"/></circle>
+        <circle cx="310" cy="425" r="2" fill="#d4a017" opacity="0.6"><animate attributeName="opacity" values="0.6;0.15;0.6" dur="3.5s" repeatCount="indefinite"/></circle>
+        <circle cx="80" cy="430" r="2.2" fill="#e8820c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.8s" repeatCount="indefinite"/></circle>
+        <circle cx="400" cy="435" r="1.8" fill="#e8820c" opacity="0.55"><animate attributeName="opacity" values="0.55;0.1;0.55" dur="4s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCES ── -->
+<section class="section" style="background:var(--parch);">
+  <div class="reveal">
+    <div class="sec-tag">Sacred Offerings</div>
+    <h2 class="sec-title">Encounters to<br><em>stir the soul</em></h2>
+  </div>
+  <div class="exp-grid reveal">
+    <div class="exp-item">
+      <span class="exp-num">01</span>
+      <h3 class="exp-title">Sunrise Bansuri Recital</h3>
+      <p class="exp-desc">Wake to a private flute performance at the lotus courtyard. A sound-bath that dissolves the boundary between music and meditation.</p>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">02</span>
+      <h3 class="exp-title">Vrindavan Heritage Walk</h3>
+      <p class="exp-desc">A guided journey through ancient ghats, kuñjas, and 5,000-year-old temples with our resident historian and devotee guide.</p>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">03</span>
+      <h3 class="exp-title">Ayurvedic Ritual</h3>
+      <p class="exp-desc">Bespoke Panchakarma and Abhyanga treatments using herbs sourced from our organic garden and the Himalayan foothills.</p>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">04</span>
+      <h3 class="exp-title">Saatvik Cooking Class</h3>
+      <p class="exp-desc">Learn to prepare 56 bhog offerings — the sacred food offered to Lord Krishna — with our head chef and resident pujari.</p>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">05</span>
+      <h3 class="exp-title">Moonlit Boat Meditation</h3>
+      <p class="exp-desc">A silent float on the Yamuna under the full moon, with a singing-bowl meditation and release of marigold diyas.</p>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">06</span>
+      <h3 class="exp-title">Rāsleela Performance</h3>
+      <p class="exp-desc">An exclusive evening performance of the divine dance of Krishna and the gopis, performed by classical Kathak artists.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── DINING ── -->
+<section class="dining reveal">
+  <div class="dining-visual">
+    <svg width="100%" height="100%" viewBox="0 0 500 580" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <rect width="500" height="580" fill="#0a1020"/>
+      <defs>
+        <radialGradient id="diningGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2a1a08" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#080c1a"/>
+        </radialGradient>
+      </defs>
+      <rect width="500" height="580" fill="url(#diningGlow)"/>
+      <!-- Ceiling beams -->
+      <rect x="0" y="0" width="500" height="30" fill="#060e14"/>
+      <rect x="60" y="0" width="14" height="50" fill="#060e14"/>
+      <rect x="180" y="0" width="14" height="50" fill="#060e14"/>
+      <rect x="306" y="0" width="14" height="50" fill="#060e14"/>
+      <rect x="426" y="0" width="14" height="50" fill="#060e14"/>
+      <!-- Hanging diyas/lamps -->
+      <line x1="120" y1="30" x2="120" y2="180" stroke="rgba(212,160,23,0.2)" stroke-width="1"/>
+      <circle cx="120" cy="185" r="14" fill="rgba(212,160,23,0.1)"/>
+      <circle cx="120" cy="185" r="8" fill="rgba(232,130,12,0.2)"/>
+      <ellipse cx="120" cy="195" rx="10" ry="4" fill="rgba(212,160,23,0.15)"/>
+      <line x1="370" y1="30" x2="370" y2="165" stroke="rgba(212,160,23,0.15)" stroke-width="1"/>
+      <circle cx="370" cy="170" r="12" fill="rgba(212,160,23,0.08)"/>
+      <circle cx="370" cy="170" r="7" fill="rgba(232,130,12,0.15)"/>
+      <!-- Marigold garlands (suggestion) -->
+      <path d="M0 80 Q125 110 250 85 Q375 60 500 90" fill="none" stroke="rgba(232,130,12,0.25)" stroke-width="3"/>
+      <path d="M0 95 Q125 125 250 100 Q375 75 500 105" fill="none" stroke="rgba(212,160,23,0.2)" stroke-width="2"/>
+      <!-- Dining table -->
+      <ellipse cx="250" cy="380" rx="180" ry="40" fill="#0c1828"/>
+      <ellipse cx="250" cy="380" rx="178" ry="38" fill="rgba(212,160,23,0.06)"/>
+      <!-- Gold rim on table -->
+      <ellipse cx="250" cy="380" rx="180" ry="40" fill="none" stroke="rgba(212,160,23,0.2)" stroke-width="1.5"/>
+      <!-- Table cloth pattern -->
+      <ellipse cx="250" cy="378" rx="170" ry="36" fill="rgba(30,47,92,0.3)"/>
+      <!-- Thali plates -->
+      <circle cx="175" cy="370" r="38" fill="rgba(212,160,23,0.08)"/>
+      <circle cx="175" cy="370" r="35" fill="none" stroke="rgba(212,160,23,0.2)" stroke-width="1"/>
+      <circle cx="325" cy="368" r="38" fill="rgba(212,160,23,0.06)"/>
+      <circle cx="325" cy="368" r="35" fill="none" stroke="rgba(212,160,23,0.18)" stroke-width="1"/>
+      <!-- Diya flame center table -->
+      <circle cx="250" cy="355" r="10" fill="rgba(232,130,12,0.2)"/>
+      <ellipse cx="250" cy="348" rx="4" ry="9" fill="rgba(240,192,64,0.4)"/>
+      <ellipse cx="250" cy="346" rx="2.5" ry="6" fill="rgba(255,230,100,0.5)"/>
+      <!-- chairs silhouette -->
+      <rect x="175" y="415" width="50" height="60" rx="4" fill="#080c14"/>
+      <rect x="275" y="412" width="50" height="60" rx="4" fill="#080c14"/>
+      <!-- Flute on wall as art -->
+      <rect x="60" y="280" width="380" height="10" rx="5" fill="rgba(212,160,23,0.2)"/>
+      <circle cx="110" cy="285" r="4" fill="rgba(8,12,26,0.7)"/>
+      <circle cx="160" cy="285" r="4" fill="rgba(8,12,26,0.7)"/>
+      <circle cx="210" cy="285" r="4" fill="rgba(8,12,26,0.7)"/>
+      <circle cx="260" cy="285" r="4" fill="rgba(8,12,26,0.7)"/>
+      <circle cx="310" cy="285" r="4" fill="rgba(8,12,26,0.7)"/>
+      <circle cx="360" cy="285" r="4" fill="rgba(8,12,26,0.7)"/>
+      <!-- floor pattern -->
+      <rect x="0" y="500" width="500" height="80" fill="#060e14"/>
+      <rect x="0" y="497" width="500" height="5" fill="rgba(212,160,23,0.1)"/>
+      <!-- diya glow on floor -->
+      <ellipse cx="175" cy="500" rx="50" ry="8" fill="rgba(212,160,23,0.06)"/>
+      <ellipse cx="325" cy="498" rx="50" ry="8" fill="rgba(212,160,23,0.05)"/>
+      <!-- floating diya lights -->
+      <circle cx="150" cy="440" r="2.5" fill="#d4a017" opacity="0.7"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.2s" repeatCount="indefinite"/></circle>
+      <circle cx="340" cy="435" r="2" fill="#e8820c" opacity="0.6"><animate attributeName="opacity" values="0.6;0.15;0.6" dur="3.2s" repeatCount="indefinite"/></circle>
+    </svg>
+  </div>
+  <div class="dining-content">
+    <div class="sec-tag">Saatvik Dining</div>
+    <h2 class="sec-title" style="font-size:2.4rem;">Food as<br><em>prasad</em></h2>
+    <p class="sec-body" style="font-size:0.85rem;">Every dish prepared as an offering — pure vegetarian, farm-sourced, cooked in the spirit of bhakti. Dine beneath marigold garlands in our courtyard restaurant.</p>
+    <ul class="menu-items">
+      <li>
+        <div>
+          <div class="menu-item-name">Panchratna Dal</div>
+          <div class="menu-item-desc">Five lentils, ancient spices, desi ghee, served with warm rotis</div>
+        </div>
+        <span class="menu-item-price">₹ 680</span>
+      </li>
+      <li>
+        <div>
+          <div class="menu-item-name">Vrindavan Thali</div>
+          <div class="menu-item-desc">12-item saatvik feast — a complete offering of flavors</div>
+        </div>
+        <span class="menu-item-price">₹ 1,450</span>
+      </li>
+      <li>
+        <div>
+          <div class="menu-item-name">Mathura Peda & Mishri</div>
+          <div class="menu-item-desc">Authentic milk-based sweets prepared as the 56 bhog</div>
+        </div>
+        <span class="menu-item-price">₹ 380</span>
+      </li>
+    </ul>
+    <button class="btn-gold" style="margin-top:2.5rem;">Full Menu →</button>
+  </div>
+</section>
+
+<!-- ── TESTIMONIAL ── -->
+<section class="testimonial">
+  <svg class="test-bg-flute" viewBox="0 0 1400 600" xmlns="http://www.w3.org/2000/svg">
+    <g transform="rotate(-10,700,300)">
+      <rect x="0" y="270" width="1400" height="25" rx="12" fill="#d4a017"/>
+      <circle cx="100" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="200" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="300" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="400" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="500" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="600" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="700" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="800" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="900" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="1000" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="1100" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="1200" cy="282" r="8" fill="#080c1a"/>
+      <circle cx="1300" cy="282" r="8" fill="#080c1a"/>
+    </g>
+  </svg>
+  <span class="test-om">ॐ</span>
+  <div class="test-stars">★ ★ ★ ★ ★</div>
+  <p class="test-quote reveal">
+    "When the bansuri played at dawn, something in me came still. I arrived as a guest and left as something closer to a devotee of this place."
+  </p>
+  <p class="test-author">— Priya Sharma, Mumbai · Diwali 2025</p>
+</section>
+
+<!-- ── OFFER ── -->
+<div class="offer">
+  <div class="reveal">
+    <h2 class="offer-title">A gift for early arrivals</h2>
+    <p class="offer-desc">Subscribe to receive exclusive seasonal packages, festival offers, and early access to our most sought-after Yamuna Suite.</p>
+  </div>
+  <div class="reveal">
+    <div class="offer-form">
+      <input class="offer-input" type="email" placeholder="your@email.com">
+      <button class="offer-submit">Receive Blessings →</button>
+    </div>
+    <p style="font-size:0.68rem;color:rgba(253,246,227,0.25);margin-top:0.8rem;font-weight:300;">Only what is worth your attention. No noise. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Krishna Hotel</div>
+      <div class="footer-om">🪈 ॐ नमो भगवते वासुदेवाय</div>
+      <p class="footer-tagline">A sanctuary of divine luxury in the heart of Vrindavan. Where every stay is a pilgrimage of the senses and the soul.</p>
+      <p style="font-size:0.62rem;color:rgba(253,246,227,0.2);letter-spacing:0.12em;text-transform:uppercase;">Est. 1994 · Green Heritage Certified</p>
+    </div>
+    <div class="footer-col">
+      <h4>Suites</h4>
+      <ul>
+        <li>Krishna Suite</li>
+        <li>Rāga Rooms</li>
+        <li>Yamuna Villa</li>
+        <li>Brindavan Cottage</li>
+        <li>Packages</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Experience</h4>
+      <ul>
+        <li>Saatvik Dining</li>
+        <li>Lotus Spa</li>
+        <li>Bansuri Recitals</li>
+        <li>Heritage Walks</li>
+        <li>Festivals</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <ul>
+        <li>Vrindavan, UP</li>
+        <li>+91 98765 43210</li>
+        <li>namaste@krishnahotel.in</li>
+        <li>Getting Here</li>
+        <li>Pilgrimage Desk</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Krishna Hotel, Vrindavan. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="#">Ig</a>
+      <a href="#">Fb</a>
+      <a href="#">Yt</a>
+    </div>
+    <span>Privacy · Terms · Sacred Code</span>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const dot = document.getElementById('cursorDot');
+let mx = 0, my = 0, cx = 0, cy = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top = my + 'px';
+});
+
+function animateCursor() {
+  cx += (mx - cx) * 0.12;
+  cy += (my - cy) * 0.12;
+  cursor.style.left = cx + 'px';
+  cursor.style.top = cy + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('button, a').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '28px'; cursor.style.height = '28px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '14px'; cursor.style.height = '14px';
+  });
+});
+
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal, .reveal-r');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = '0s';
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.exp-item, .amenity, .room-card').forEach((child, j) => {
+        child.style.transitionDelay = (j * 0.08) + 's';
+      });
+    }
+  });
+}, { threshold: 0.08 });
+
+reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
